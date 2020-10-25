@@ -663,6 +663,7 @@ impl Generator {
                             CharacterSet::Include(c) => (c, true),
                             CharacterSet::Exclude(c) => (c, false),
                         };
+                        let mut ranges = chars.ranges_without(&ruled_out_chars);
                         let mut call_id = None;
                         let mut ranges =
                             CharacterSet::ranges(chars, &ruled_out_chars).collect::<Vec<_>>();

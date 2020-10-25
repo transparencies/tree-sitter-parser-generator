@@ -472,10 +472,8 @@ fn all_chars_are_alphabetical(cursor: &NfaCursor) -> bool {
     cursor.transition_chars().all(|(chars, is_sep)| {
         if is_sep {
             true
-        } else if let CharacterSet::Include(chars) = chars {
-            chars.iter().all(|c| c.is_alphabetic() || *c == '_')
         } else {
-            false
+            chars.chars().all(|c| c.is_alphabetic() || c == '_')
         }
     })
 }
